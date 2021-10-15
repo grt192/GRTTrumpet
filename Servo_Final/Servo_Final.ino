@@ -42,9 +42,9 @@ void setup(){
 void loop() //takes 200 micro seconds 
 {
  digitalWrite(testPin, HIGH);
- counter1 = counter1 + 1;
- counter2 = counter2 + 1;
- counter3 = counter3 + 1;
+ counter1 += 1;
+ counter2 += 1;
+ counter3 += 1;
  
  // local variable to hold the pushbutton states
   int button1State;
@@ -63,7 +63,7 @@ void loop() //takes 200 micro seconds
   
   if (button1State == LOW) {
     servo1.write(180); //zero degrees apparently(fact check pls)
-    if (counter1 == 1600){
+    if (counter1 >= 1600){
       servo1.write(0);
     }
   }
@@ -75,7 +75,7 @@ void loop() //takes 200 micro seconds
   
   if(button2State == LOW) {
     servo2.write(20);
-    if(counter2 == 1600){
+    if(counter2 >= 1600){
       servo2.write(0);
     }
   }
@@ -87,7 +87,7 @@ void loop() //takes 200 micro seconds
   
   if(button3State == LOW) {
     servo3.write(180);
-    if(counter3 == 1600){
+    if(counter3 >= 1600){
       servo3.write(0);
     }
   }
