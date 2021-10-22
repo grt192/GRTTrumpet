@@ -13,6 +13,15 @@ class Valve {
     int _counter;
     int _buttonstate;
  
+    //lets us create global variables
+    Valve():
+      _buttonpin(0),
+      _servopin(0),
+      _counter(0),
+      _servo(s1),
+      _buttonstate(LOW),   
+    {}
+    
     Valve(int buttonpin, int servopin, Servo servo, int counter){
       _buttonpin = buttonpin;
       _servopin = servopin;
