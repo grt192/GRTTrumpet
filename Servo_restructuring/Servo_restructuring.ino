@@ -13,26 +13,17 @@ class Valve {
     int _counter;
     int _buttonstate;
  
-    //lets us create global variables
-    Valve():
-      _buttonpin(0),
-      _servopin(0),
-      _counter(0),
-      _servo(s1),
-      _buttonstate(LOW),   
-    {}
-    
     Valve(int buttonpin, int servopin, Servo servo, int counter){
       _buttonpin = buttonpin;
       _servopin = servopin;
       _counter = counter;
       _servo = servo;
-      _buttonstate = LOW;     
+      _buttonstate = HIGH;     
     }
 };
 
     Valve* valves[3];
-    // star either means pointer or "give me the thing at the address"
+    // star either means pointer or "give me the thing at athe address"
 
     void setup() {
   // put your setup code here, to run once:
@@ -44,7 +35,7 @@ class Valve {
       for (int i = 0; i < 3; i++){
         //valves[i]._servo.attach (valves[i]._servopin);
         //*(valves[i]).servo
-        valves[i]->_servo.attach(valves[i]->_servopin);
+        valves[i]->_servo.attach (valves[i]->_servopin);
         pinMode(valves[i]->_buttonpin, INPUT);
         digitalRead(valves[i]->_buttonpin);
       }
@@ -53,30 +44,31 @@ class Valve {
       // put your main code here, to run repeatedly:
       for (int i = 0; i < 3; i++){
         valves[i]->_buttonstate = digitalRead(valves[i]->_buttonpin);
-      
+
       }
           
-      if (valves[0]->_buttonstate == LOW) {
-        valves[0]->_servo.write(180); //zero degrees apparently(fact check pls)
+      if (valves[0]->_buttonstate == HIGH) { //Switches highs and lows
+        valves[0]->_servo.write(20); //zero degrees apparently(fact check pls)
       }
-      else{
-        valves[0]->_servo.write(20);
+      else if(valves[0]->_buttonstate == LOW){
+        valves[0]->_servo.write(180);
       }
     
-      if(valves[1]->_buttonstate == LOW) {
-        valves[1]->_servo.write(20);
-      }
-      else{
+      if(valves[1]->_buttonstate == HIGH) {
         valves[1]->_servo.write(180);
       }
+      else if(valves[1]->_buttonstate == LOW){
+        valves[1]->_servo.write(20);
+      }
     
-      if(valves[2]->_buttonstate == LOW) {
+      if(valves[2]->_buttonstate == HIGH) {
         valves[2]->_servo.write(180);
       }
-      else {
+      else if(valves[2]->_buttonstate == LOW){
         valves[2]->_servo.write(20);
       }
-      //else{
-      //  valves[0]->_servo.write(20);
-      //}
+      else{
+        valves[0]->_servo.write(180);
+      }
+
    }
