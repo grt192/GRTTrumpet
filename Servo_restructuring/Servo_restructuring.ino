@@ -62,10 +62,10 @@ class Valve {
       }
     
       if(valves[2]->_buttonstate == HIGH) {
-        valves[2]->_servo.write(180);
+        valves[2]->_servo.write(20);
       }
       else if(valves[2]->_buttonstate == LOW){
-        valves[2]->_servo.write(20);
+        valves[2]->_servo.write(180);
       }
       else{
         valves[0]->_servo.write(180);
