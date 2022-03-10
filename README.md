@@ -1,4 +1,4 @@
-# GRTTrumpet
+# Trumpet Project
 This repository stores the latest version Trumpet project code 2022; a project where we built a trumpet valve actuation system for a kid in our distrist. The wiki also has all the info on the wiring, troubleshooting and the project as a whole.
 
 
