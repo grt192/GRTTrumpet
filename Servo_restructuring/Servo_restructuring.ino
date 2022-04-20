@@ -23,21 +23,21 @@ class Valve {
 };
 
     Valve* valves[3];
-    // star either means pointer or "give me the thing at athe address"
+    // star either means pointer or "give me the thing at the address"
 
     void setup() {
   // put your setup code here, to run once:
-      valves[0] = new Valve(8, 3, s1, 0);
-      valves[1] = new Valve(9, 4, s2, 0);
-      valves[2] = new Valve(11, 5, s3, 0);
+      valves[0] = new Valve(9, 3, s1, 0); //middle servo
+      valves[1] = new Valve(8, 4, s2, 0); //first servo
+      valves[2] = new Valve(11, 5, s3, 0); // last servo
       
       //valves[3] = {v1, v2, v3};
       for (int i = 0; i < 3; i++){
-        //valves[i]._servo.attach (valves[i]._servopin);
-        //*(valves[i]).servo
         valves[i]->_servo.attach (valves[i]->_servopin);
         pinMode(valves[i]->_buttonpin, INPUT);
         digitalRead(valves[i]->_buttonpin);
+
+        Serial.begin(9600);
       }
     }
     void loop() {
@@ -47,28 +47,35 @@ class Valve {
 
       }
           
-      if (valves[0]->_buttonstate == HIGH) { //Switches highs and lows
-        valves[0]->_servo.write(20); //zero degrees apparently(fact check pls)
+      if (valves[0]->_buttonstate == HIGH) {
+        valves[0]->_servo.write(0); 
+       
       }
-      else if(valves[0]->_buttonstate == LOW){
-        valves[0]->_servo.write(180);
+      else if(valves[0]->_buttonstate == LOW){ 
+        valves[0]->_servo.write(60);
+    
       }
     
       if(valves[1]->_buttonstate == HIGH) {
-        valves[1]->_servo.write(20);
+        valves[1]->_servo.write(0);
+        
       }
       else if(valves[1]->_buttonstate == LOW){
-        valves[1]->_servo.write(180);
+        valves[1]->_servo.write(60);
+        
       }
     
       if(valves[2]->_buttonstate == HIGH) {
-        valves[2]->_servo.write(180);
+        valves[2]->_servo.write(0);
+        Serial.print("button is not pressed");
       }
       else if(valves[2]->_buttonstate == LOW){
-        valves[2]->_servo.write(20);
+        valves[2]->_servo.write(60);
+        Serial.print("button is pressed");
       }
       else{
-        valves[0]->_servo.write(180);
+        //valves[1]->_servo.write();
+        Serial.print("elseing");
       }
 
    }
