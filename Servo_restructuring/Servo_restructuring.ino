@@ -66,11 +66,11 @@ class Valve {
       }
     
       if(valves[2]->_buttonstate == HIGH) {
-        valves[2]->_servo.write(0);
+        valves[2]->_servo.write(30);
         Serial.print("button is not pressed");
       }
       else if(valves[2]->_buttonstate == LOW){
-        valves[2]->_servo.write(60);
+        valves[2]->_servo.write(0);
         Serial.print("button is pressed");
       }
       else{
