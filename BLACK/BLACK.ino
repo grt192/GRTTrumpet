@@ -49,27 +49,27 @@ class Valve {
       }
           
       if (valves[0]->_buttonstate == HIGH) {
-        valves[0]->_servo.write(0); //zero degrees apparently(fact check pls)
+        valves[0]->_servo.write(40); //zero degrees apparently(fact check pls)
       }
       else{
-        valves[0]->_servo.write(20); // WORKS
+        valves[0]->_servo.write(65); // WORKS
         Serial.print("s1\n");
 
       }
     
       if(valves[1]->_buttonstate == HIGH) {
-        valves[1]->_servo.write(0);
+        valves[1]->_servo.write(10);
       }
       else{
-        valves[1]->_servo.write(20); 
+        valves[1]->_servo.write(35); 
             Serial.print("s2\n");
       }
     
       if(valves[2]->_buttonstate == HIGH) {
-        valves[2]->_servo.write(20);
+        valves[2]->_servo.write(60);
       }
       else {
-        valves[2]->_servo.write(0);
+        valves[2]->_servo.write(31);
             Serial.print("s3\n"); // WORKS
       }
 
